@@ -1,0 +1,48 @@
+﻿<Window x:Class="Stock_Market.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stock_Market"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="30"/>
+
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Daily">
+                <DataGrid x:Name="dg_Stocks" ></DataGrid>
+            </TabItem>
+            <TabItem Header="List of Stock"  >
+            
+
+                    <ListView x:Name="lv_Stock_List" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
+                    <!--<ListViewItem Content="AAPL"></ListViewItem>-->
+                    <ListViewItem Content="GOOG"></ListViewItem>
+                    <ListViewItem Content="TSLA"></ListViewItem>
+                    <ListViewItem Content="AMZN"></ListViewItem>
+                    <!--<ListViewItem Content="601288"></ListViewItem>-->
+
+                    
+                </ListView>
+            </TabItem>
+            <TabItem Header="Details" />
+        </TabControl>
+        <DockPanel Grid.Row="2">
+            <!--<Button DockPanel.Dock="Right" Content="Update" HorizontalAlignment="Right" Padding="10,0" 
+                    Background="Transparent" Foreground="DarkBlue" BorderBrush="DarkBlue" Click="Button_Click"/>-->
+           
+            <Button Name="btn_AddStock" DockPanel.Dock="Right" Content="Add" HorizontalAlignment="Right" Padding="10,0" 
+                    Background="DarkBlue" Foreground="White" BorderThickness="0" Click="btn_AddStock_Click" />
+            <TextBox x:Name="txtbx_Stock"  DockPanel.Dock="Right"  Width="70" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="5,0" 
+                    Background="Transparent" Foreground="DarkBlue" BorderBrush="DarkBlue" BorderThickness="2" CharacterCasing="Upper"/>
+            <Label Content=" Last Updated: " DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="DarkBlue" FontWeight="Bold"/>
+            <TextBlock x:Name="txtblk_LastUpdated" Text="date-time"  DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="DarkBlue" FontWeight="ExtraLight" />
+        </DockPanel>
+    </Grid>
+</Window>
