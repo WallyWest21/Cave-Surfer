@@ -219,5 +219,18 @@ namespace Stock_Market
             UpdateStocks3();
 
         }
+
+        private void dg_Stocks_CurrentCellChanged(object sender, EventArgs e)
+        {
+            DataGridCell mycell = (DataGridCell)sender;
+            mycell.Foreground = Brushes.DarkGreen;
+        }
+
+        private void dg_Stocks_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            DataGridCell mycell = (DataGridCell)sender;
+            mycell.Foreground = Brushes.DarkGreen;
+
+        }
     }
 }

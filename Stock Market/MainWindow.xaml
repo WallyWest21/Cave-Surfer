@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="1">
             <TabItem Header="Daily">
-                <DataGrid x:Name="dg_Stocks" ></DataGrid>
+                <DataGrid x:Name="dg_Stocks" CurrentCellChanged="dg_Stocks_CurrentCellChanged" CellEditEnding="dg_Stocks_CellEditEnding" ></DataGrid>
             </TabItem>
             <TabItem Header="List of Stock"  >
             

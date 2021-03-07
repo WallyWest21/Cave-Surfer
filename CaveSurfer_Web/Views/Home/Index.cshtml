@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@{
+    StockMarket_Lib.cl_StockMarket cl_StockMarket = new StockMarket_Lib.cl_StockMarket();
+
+    List<string> tickerlist = new List<string> { "AAPL", "GOOG", "AMZN", "FB" };
+
+    List<StockMarket_Lib.StockPriceModel> _manualReadTagList = new List<StockMarket_Lib.StockPriceModel>();
+    //foreach (string ticker in tickerlist)
+    //{
+    //    foreach (var r in await cl_StockMarket.GetStockData(ticker, DateTime.Now.AddMilliseconds(-2).ToString("MM/dd/yyyy HH:mm"), DateTime.Now.ToString("MM/dd/yyyy HH:mm"), "daily"))
+    //    {
+    //        _manualReadTagList.Add(r);
+    //    }
+
+    //}
+}
+
+@foreach (string ti in tickerlist)
+{
+    @*@foreach (var x in cl_StockMarket.GetStockdataNotAsync(ti, DateTime.Now.AddMilliseconds(-2).ToString("MM/dd/yyyy HH:mm"), DateTime.Now.ToString("MM/dd/yyyy HH:mm"), "daily"))
+        {*@
+    <div class="container">
+        <h2>@ti</h2>
+        <p>Add the .stretched-link class to a link inside the card, and it will make the whole card clickable (the card will act as a link):</p>
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">x.Close</h4>
+                <p class="card-text">x.Volume</p>
+                <a href="#" class="btn btn-primary stretched-link">x.Open</a>
+            </div>
+        </div>
+    </div>
+    @*  *@}
+        }
+
+
+<div id="div" class="row" style="padding:20px;">
+    <div class="col-md-3">
+        <div class="row form-group form-inline" style="margin-top:5px">
+            <label class="col-sm-5 control-label" for="ticker">Ticker:</label>
+            <div class="col-sm-7">
+                <input id="ticker" type="text" class="form-control input-sm" style="height:25px;width:100%" value="SPY" />
+            </div>
+        </div>
+        <div class="row form-group form-inline" style="margin-top:-5px">
+            <label class="col-sm-5 control-label" for="startDate">Start Date:</label>
+            <div class="col-sm-7">
+                <input id="startDate" type="text" class="form-control input-sm" style="height:25px;width:100%" value="2016-01-01" />
+            </div>
+        </div>
+        <div class="row form-group form-inline" style="margin-top:-5px">
+            <label class="col-sm-5 control-label" for="endDate">End Date:</label>
+            <div class="col-sm-7">
+                <input id="endDate" type="text" class="form-control input-sm" style="height:25px;width:100%" value="2018-01-01" />
+            </div>
+        </div>
+        <div class="row form-group form-inline" style="margin-top:20px">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <button id="btnCreateChart" class="btn btn-primary">Create Chart</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div id="chart" style="width:100%;height:700px;overflow:hidden;padding:10px">
+            <div id="candlestick" style="height:55%"></div>
+            <div id="volume" style="height:30%;margin-top:-1%"></div>
+            <div id="filter" style="height:15%;margin-top:1%"></div>
+        </div>
+    </div>
+</div>
+
+@*@{
+    var myChart = new System.Web.Helpers.Chart(width: 600, height: 400)
+       .AddTitle("Employees")
+       .AddSeries(chartType: "column",
+          xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+          yValues: new[] { "2", "6", "4", "5", "3" })
+       .Write();
+}*@
+
+
+

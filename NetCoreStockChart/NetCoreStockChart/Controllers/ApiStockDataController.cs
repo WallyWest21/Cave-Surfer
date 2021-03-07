@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NetCoreStockChart.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using YahooFinanceApi;
 
-namespace StockMarket_Lib
+namespace NetCoreStockChart.Controllers
 {
     [Produces("application/json")]
-
-    public class cl_StockMarket
+    public class ApiStockDataController : Controller
     {
         [Route("~/api/ApiStockData/{ticker}/{start}/{end}/{period}")]
         [HttpGet]
@@ -30,29 +28,16 @@ namespace StockMarket_Lib
                 models.Add(new StockPriceModel
                 {
                     Ticker = ticker,
-                    //Date = r.DateTime.ToString("yyyy-MM-dd"),
-                    Date = r.DateTime.ToString("MM/dd/yyyy HH:mm"),
+                    Date = r.DateTime.ToString("yyyy-MM-dd"),
                     Open = r.Open,
                     High = r.High,
                     Low = r.Low,
                     Close = r.Close,
                     AdjustedClose = r.AdjustedClose,
                     Volume = r.Volume
-
                 });
             }
             return models;
         }
-    }
-    public class StockPriceModel
-    {
-        public string Ticker { get; set; }
-        public string Date { get; set; }
-        public decimal Open { get; set; }
-        public decimal High { get; set; }
-        public decimal Low { get; set; }
-        public decimal Close { get; set; }
-        public decimal AdjustedClose { get; set; }
-        public decimal Volume { get; set; }
     }
 }
